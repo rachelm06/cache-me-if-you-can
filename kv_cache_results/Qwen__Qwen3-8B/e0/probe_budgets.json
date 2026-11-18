@@ -1,0 +1,9 @@
+{
+  "probe_budgets": [
+    0.7,
+    0.9
+  ],
+  "in_band": true,
+  "full_tf_exact": 1.0,
+  "written": "2026-11-18T09:18:43+00:00"
+}

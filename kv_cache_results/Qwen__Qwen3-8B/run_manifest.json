@@ -1,0 +1,1584 @@
+{
+  "model": "Qwen/Qwen3-8B",
+  "preset": "full",
+  "written": "2026-11-18T18:21:26+00:00",
+  "probe_budgets": {
+    "probe_budgets": [
+      0.7,
+      0.9
+    ],
+    "in_band": true,
+    "full_tf_exact": 1.0,
+    "written": "2026-11-18T09:18:43+00:00"
+  },
+  "config": {
+    "PRESET": "full",
+    "MODEL_ID": "Qwen/Qwen3-8B",
+    "LANE": "final",
+    "RUN_E0": true,
+    "RUN_E5": true,
+    "RUN_E2": true,
+    "RUN_E1": true,
+    "RUN_E3": true,
+    "RUN_E4": true,
+    "RUN_E6": true,
+    "RUN_BENCH": true,
+    "RUN_MMLU": false,
+    "RUN_LONGBENCH": false,
+    "SINK_TOKENS": 4,
+    "OBS_WINDOW": 32,
+    "POOL_KERNEL": 7,
+    "LAMBDA": 1.0,
+    "TIER_SPLIT": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "QUERY_AWARE": false,
+    "SEED": 42,
+    "HAYSTACK": "natural",
+    "EXP_DOCS": 30,
+    "RETRIEVAL_FACTS": 20,
+    "RETRIEVAL_TOKENS": 3000,
+    "KEEP_GRID": [
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "E5_BUDGETS": [
+      0.1,
+      0.2,
+      "int4"
+    ],
+    "PROBE_BUDGETS_FALLBACK": [
+      0.6,
+      0.8
+    ],
+    "AUTO_PROBE_BUDGETS": true,
+    "EXP_GENERATE": false,
+    "GATE_MIN_TF_EXACT": 0.7,
+    "BENCH_BATCH": 4,
+    "BENCH_SEQ_LEN": 4096,
+    "BENCH_DECODE_TOKENS": 64,
+    "BENCH_REPEATS": 3,
+    "BENCH_WARMUP_STEPS": 3,
+    "MAX_INPUT_TOKENS": 4096,
+    "MMLU_TASKS": [
+      "mmlu"
+    ],
+    "MMLU_LIMIT": 10,
+    "MMLU_FEWSHOT": 5,
+    "LONGBENCH_TASKS": [
+      "longbench_hotpotqa",
+      "longbench_2wikimqa",
+      "longbench_multifieldqa_en",
+      "longbench_qasper",
+      "longbench_passage_retrieval_en"
+    ],
+    "LONGBENCH_LIMIT": 200
+  },
+  "config_note": "config of the last notebook lane that ran section 19; every lane attempt under 'lanes' records its own config",
+  "lanes": {
+    "bench": {
+      "lane": "bench",
+      "attempts": [
+        {
+          "lane": "bench",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3407",
+          "job_id": "29512387",
+          "attempt": 0,
+          "pid": 4130652,
+          "start": "2026-11-18T07:06:44+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-7db9db50-9924-d7ad-6194-da5c333e6862"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "bench",
+            "RUN_E0": false,
+            "RUN_E5": false,
+            "RUN_E2": false,
+            "RUN_E1": false,
+            "RUN_E3": false,
+            "RUN_E4": false,
+            "RUN_E6": false,
+            "RUN_BENCH": true,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": false,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 4096,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "bench": {
+              "arms_run": 0,
+              "arms_cached": 0,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T07:07:26+00:00",
+              "end": "2026-11-18T07:14:06+00:00",
+              "repeats": 3,
+              "gpu": {
+                "name": "NVIDIA L40S",
+                "memory_GiB": 44.4,
+                "driver": "590.48.01",
+                "uuid": "GPU-7db9db50-9924-d7ad-6194-da5c333e6862"
+              }
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 34.9
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "end": "2026-11-18T07:14:06+00:00"
+        }
+      ]
+    },
+    "exp-a": {
+      "lane": "exp-a",
+      "attempts": [
+        {
+          "lane": "exp-a",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3405",
+          "job_id": "29512385",
+          "attempt": 0,
+          "pid": 4034342,
+          "start": "2026-11-18T07:06:45+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-d4982361-642a-b5a8-edd7-46f2b9137a85"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "exp-a",
+            "RUN_E0": true,
+            "RUN_E5": false,
+            "RUN_E2": true,
+            "RUN_E1": false,
+            "RUN_E3": true,
+            "RUN_E4": false,
+            "RUN_E6": true,
+            "RUN_BENCH": false,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": false,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 4096,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "e0": {
+              "arms_run": 19,
+              "arms_cached": 1,
+              "seconds_run": 3032.1141580841504,
+              "start": "2026-11-18T07:10:08+00:00",
+              "end": "2026-11-18T07:58:00+00:00",
+              "probe_budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 19,
+                "mean_s": 159.5849556886395,
+                "median_s": 158.0311377600301,
+                "total_h": 0.8422539328011529
+              }
+            },
+            "e2": {
+              "arms_run": 33,
+              "arms_cached": 0,
+              "seconds_run": 1065.6024408829398,
+              "start": "2026-11-18T07:58:00+00:00",
+              "end": "2026-11-18T08:15:48+00:00",
+              "budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 33,
+                "mean_s": 32.29098305705878,
+                "median_s": 32.61527333292179,
+                "total_h": 0.29600067802303887
+              }
+            },
+            "e3": {
+              "arms_run": 31,
+              "arms_cached": 0,
+              "seconds_run": 2061.0296509754844,
+              "start": "2026-11-18T08:15:48+00:00",
+              "end": "2026-11-18T08:50:10+00:00",
+              "budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 31,
+                "mean_s": 66.48482745082208,
+                "median_s": 43.04600209579803,
+                "total_h": 0.572508236382079
+              }
+            },
+            "e6": {
+              "arms_run": 44,
+              "arms_cached": 0,
+              "seconds_run": 1372.5073658879846,
+              "start": "2026-11-18T08:50:11+00:00",
+              "end": "2026-11-18T09:13:05+00:00",
+              "budgets": [
+                0.2,
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 44,
+                "mean_s": 31.193349224726923,
+                "median_s": 31.89103984355461,
+                "total_h": 0.38125204607999574
+              }
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 33.3
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "headroom_gate": {
+            "tf_exact": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "haystack": "natural"
+          },
+          "end": "2026-11-18T09:13:06+00:00"
+        }
+      ]
+    },
+    "exp-b": {
+      "lane": "exp-b",
+      "attempts": [
+        {
+          "lane": "exp-b",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3406",
+          "job_id": "29512386",
+          "attempt": 0,
+          "pid": 1574621,
+          "start": "2026-11-18T07:06:44+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-dcb7bca1-7930-4730-ea15-5592aa070d26"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "exp-b",
+            "RUN_E0": false,
+            "RUN_E5": true,
+            "RUN_E2": false,
+            "RUN_E1": true,
+            "RUN_E3": false,
+            "RUN_E4": true,
+            "RUN_E6": false,
+            "RUN_BENCH": false,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": false,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 4096,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "e0": {
+              "arms_run": 1,
+              "arms_cached": 0,
+              "seconds_run": 163.46514773741364
+            },
+            "e5": {
+              "arms_run": 64,
+              "arms_cached": 0,
+              "seconds_run": 2063.7057367432863,
+              "start": "2026-11-18T07:10:10+00:00",
+              "end": "2026-11-18T07:44:37+00:00",
+              "seconds": {
+                "arms": 64,
+                "mean_s": 32.24540213661385,
+                "median_s": 32.10679886955768,
+                "total_h": 0.5732515935398017
+              }
+            },
+            "e1": {
+              "arms_run": 81,
+              "arms_cached": 0,
+              "seconds_run": 2683.002222439274,
+              "start": "2026-11-18T07:44:38+00:00",
+              "end": "2026-11-18T08:29:24+00:00",
+              "seconds": {
+                "arms": 81,
+                "mean_s": 33.12348422764536,
+                "median_s": 33.30811822228134,
+                "total_h": 0.7452783951220207
+              }
+            },
+            "e4": {
+              "arms_run": 60,
+              "arms_cached": 0,
+              "seconds_run": 1890.2546738442034,
+              "start": "2026-11-18T08:29:24+00:00",
+              "end": "2026-11-18T09:00:58+00:00",
+              "seconds": {
+                "arms": 60,
+                "mean_s": 31.504244564070056,
+                "median_s": 31.54123449511826,
+                "total_h": 0.5250707427345009
+              }
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 34.7
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "headroom_gate": {
+            "tf_exact": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "haystack": "natural"
+          },
+          "end": "2026-11-18T09:00:58+00:00"
+        }
+      ]
+    },
+    "final": {
+      "lane": "final",
+      "attempts": [
+        {
+          "lane": "final",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3405",
+          "job_id": "29512388",
+          "attempt": 0,
+          "pid": 4041024,
+          "start": "2026-11-18T09:16:46+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-d4982361-642a-b5a8-edd7-46f2b9137a85"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "final",
+            "RUN_E0": true,
+            "RUN_E5": true,
+            "RUN_E2": true,
+            "RUN_E1": true,
+            "RUN_E3": true,
+            "RUN_E4": true,
+            "RUN_E6": true,
+            "RUN_BENCH": true,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": false,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 4096,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "e0": {
+              "arms_run": 0,
+              "arms_cached": 20,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:42+00:00",
+              "end": "2026-11-18T09:18:43+00:00",
+              "probe_budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 19,
+                "mean_s": 159.64884591765554,
+                "median_s": 158.0311377600301,
+                "total_h": 0.842591131232071
+              }
+            },
+            "e5": {
+              "arms_run": 0,
+              "arms_cached": 64,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:43+00:00",
+              "end": "2026-11-18T09:18:46+00:00",
+              "seconds": {
+                "arms": 64,
+                "mean_s": 32.24540213661385,
+                "median_s": 32.10679886955768,
+                "total_h": 0.5732515935398017
+              }
+            },
+            "e2": {
+              "arms_run": 0,
+              "arms_cached": 33,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:46+00:00",
+              "end": "2026-11-18T09:18:48+00:00",
+              "budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 33,
+                "mean_s": 32.29098305705878,
+                "median_s": 32.61527333292179,
+                "total_h": 0.29600067802303887
+              }
+            },
+            "e1": {
+              "arms_run": 0,
+              "arms_cached": 81,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:48+00:00",
+              "end": "2026-11-18T09:18:50+00:00",
+              "seconds": {
+                "arms": 81,
+                "mean_s": 33.12348422764536,
+                "median_s": 33.30811822228134,
+                "total_h": 0.7452783951220207
+              }
+            },
+            "e3": {
+              "arms_run": 0,
+              "arms_cached": 31,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:50+00:00",
+              "end": "2026-11-18T09:18:51+00:00",
+              "budgets": [
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 31,
+                "mean_s": 66.48482745082208,
+                "median_s": 43.04600209579803,
+                "total_h": 0.572508236382079
+              }
+            },
+            "e4": {
+              "arms_run": 0,
+              "arms_cached": 60,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:51+00:00",
+              "end": "2026-11-18T09:18:53+00:00",
+              "seconds": {
+                "arms": 60,
+                "mean_s": 31.504244564070056,
+                "median_s": 31.54123449511826,
+                "total_h": 0.5250707427345009
+              }
+            },
+            "e6": {
+              "arms_run": 0,
+              "arms_cached": 44,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:54+00:00",
+              "end": "2026-11-18T09:18:55+00:00",
+              "budgets": [
+                0.2,
+                0.7,
+                0.9
+              ],
+              "seconds": {
+                "arms": 44,
+                "mean_s": 31.193349224726923,
+                "median_s": 31.89103984355461,
+                "total_h": 0.38125204607999574
+              }
+            },
+            "bench": {
+              "arms_run": 0,
+              "arms_cached": 0,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T09:18:55+00:00",
+              "end": "2026-11-18T09:18:55+00:00",
+              "repeats": 3,
+              "gpu": {
+                "name": "NVIDIA L40S",
+                "memory_GiB": 44.4,
+                "driver": "590.48.01",
+                "uuid": "GPU-d4982361-642a-b5a8-edd7-46f2b9137a85"
+              }
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 107.0
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "headroom_gate": {
+            "tf_exact": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "haystack": "natural"
+          },
+          "end": "2026-11-18T09:18:57+00:00"
+        }
+      ]
+    },
+    "optional": {
+      "lane": "optional",
+      "attempts": [
+        {
+          "lane": "optional",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3207",
+          "job_id": "29532610",
+          "attempt": 0,
+          "pid": 647330,
+          "start": "2026-11-18T13:02:12+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-1d676914-f592-f012-ca5e-0d7e2630482e"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "optional",
+            "RUN_E0": false,
+            "RUN_E5": false,
+            "RUN_E2": false,
+            "RUN_E1": false,
+            "RUN_E3": false,
+            "RUN_E4": false,
+            "RUN_E6": false,
+            "RUN_BENCH": false,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": true,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 32768,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "longbench": {
+              "arms_run": 0,
+              "arms_cached": 0,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T13:02:22+00:00"
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 3.2
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "longbench_tasks_kept": [
+            "longbench_hotpotqa",
+            "longbench_2wikimqa",
+            "longbench_multifieldqa_en",
+            "longbench_qasper",
+            "longbench_passage_retrieval_en"
+          ]
+        },
+        {
+          "lane": "optional",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3615",
+          "job_id": "29532610",
+          "attempt": 1,
+          "pid": 330140,
+          "start": "2026-11-18T15:52:17+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-1e02d411-5d9e-2143-16e4-b75aa5a5ba0e"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "optional",
+            "RUN_E0": false,
+            "RUN_E5": false,
+            "RUN_E2": false,
+            "RUN_E1": false,
+            "RUN_E3": false,
+            "RUN_E4": false,
+            "RUN_E6": false,
+            "RUN_BENCH": false,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": true,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 32768,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {}
+        },
+        {
+          "lane": "optional",
+          "preset": "full",
+          "model": "Qwen/Qwen3-8B",
+          "host": "node3600",
+          "job_id": "29532610",
+          "attempt": 2,
+          "pid": 259391,
+          "start": "2026-11-18T16:02:16+00:00",
+          "versions": {
+            "torch": "2.11.0+cu128",
+            "transformers": "4.57.1",
+            "accelerate": "1.16.0",
+            "datasets": "3.6.0",
+            "lm_eval": "0.4.11",
+            "papermill": "2.7.0",
+            "numpy": "2.5.5",
+            "pandas": "2.3.3",
+            "python": "3.12.13",
+            "cuda_runtime": "12.8"
+          },
+          "gpu": {
+            "name": "NVIDIA L40S",
+            "memory_GiB": 44.4,
+            "driver": "590.48.01",
+            "uuid": "GPU-25a1794f-ef4d-3797-b7ae-5a7fc6ce6dd8"
+          },
+          "git": {
+            "commit": "ccc0817cf646101b4effb309a952e5dae0e11c9e",
+            "branch": "consolidated-qwen3",
+            "dirty": false
+          },
+          "config": {
+            "PRESET": "full",
+            "MODEL_ID": "Qwen/Qwen3-8B",
+            "LANE": "optional",
+            "RUN_E0": false,
+            "RUN_E5": false,
+            "RUN_E2": false,
+            "RUN_E1": false,
+            "RUN_E3": false,
+            "RUN_E4": false,
+            "RUN_E6": false,
+            "RUN_BENCH": false,
+            "RUN_MMLU": false,
+            "RUN_LONGBENCH": true,
+            "SINK_TOKENS": 4,
+            "OBS_WINDOW": 32,
+            "POOL_KERNEL": 7,
+            "LAMBDA": 1.0,
+            "TIER_SPLIT": [
+              0.3333333333333333,
+              0.3333333333333333,
+              0.3333333333333333
+            ],
+            "QUERY_AWARE": false,
+            "SEED": 42,
+            "HAYSTACK": "natural",
+            "EXP_DOCS": 30,
+            "RETRIEVAL_FACTS": 20,
+            "RETRIEVAL_TOKENS": 3000,
+            "KEEP_GRID": [
+              0.3,
+              0.4,
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9
+            ],
+            "E5_BUDGETS": [
+              0.1,
+              0.2,
+              "int4"
+            ],
+            "PROBE_BUDGETS_FALLBACK": [
+              0.6,
+              0.8
+            ],
+            "AUTO_PROBE_BUDGETS": true,
+            "EXP_GENERATE": false,
+            "GATE_MIN_TF_EXACT": 0.7,
+            "BENCH_BATCH": 4,
+            "BENCH_SEQ_LEN": 4096,
+            "BENCH_DECODE_TOKENS": 64,
+            "BENCH_REPEATS": 3,
+            "BENCH_WARMUP_STEPS": 3,
+            "MAX_INPUT_TOKENS": 32768,
+            "MMLU_TASKS": [
+              "mmlu"
+            ],
+            "MMLU_LIMIT": 10,
+            "MMLU_FEWSHOT": 5,
+            "LONGBENCH_TASKS": [
+              "longbench_hotpotqa",
+              "longbench_2wikimqa",
+              "longbench_multifieldqa_en",
+              "longbench_qasper",
+              "longbench_passage_retrieval_en"
+            ],
+            "LONGBENCH_LIMIT": 200
+          },
+          "experiments": {
+            "longbench": {
+              "arms_run": 0,
+              "arms_cached": 0,
+              "seconds_run": 0.0,
+              "start": "2026-11-18T16:03:40+00:00",
+              "end": "2026-11-18T17:48:41+00:00",
+              "tasks_kept": [
+                "longbench_hotpotqa",
+                "longbench_2wikimqa",
+                "longbench_multifieldqa_en",
+                "longbench_qasper",
+                "longbench_passage_retrieval_en"
+              ]
+            }
+          },
+          "model_info": {
+            "id": "Qwen/Qwen3-8B",
+            "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+            "dtype": "torch.bfloat16",
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "max_position_embeddings": 40960,
+            "load_seconds": 53.2
+          },
+          "load_checks": {
+            "dims": [
+              36,
+              8,
+              128
+            ],
+            "prefill_extend": {
+              "argmax_agreement": 1.0,
+              "mean_abs_logit_diff": 0.12135133147239685,
+              "max_abs_logit_diff": 5.1875
+            },
+            "kv_memory": [
+              {
+                "method": "full",
+                "measured_MiB": 102.12529754638672,
+                "logical_MiB": 101.390625,
+                "off_pct": 0.7245961314339633,
+                "asserted": true
+              },
+              {
+                "method": "quant-int8",
+                "measured_MiB": 60.01201629638672,
+                "logical_MiB": 59.99853515625,
+                "off_pct": 0.022469115456913435,
+                "asserted": true
+              },
+              {
+                "method": "quant-int4",
+                "measured_MiB": 35.59600067138672,
+                "logical_MiB": 35.58251953125,
+                "off_pct": 0.03788697459965462,
+                "asserted": true
+              },
+              {
+                "method": "quant-int2",
+                "measured_MiB": 23.39678192138672,
+                "logical_MiB": 23.37451171875,
+                "off_pct": 0.09527558438302552,
+                "asserted": true
+              },
+              {
+                "method": "attn-select@20%",
+                "measured_MiB": 20.25029754638672,
+                "logical_MiB": 20.25,
+                "off_pct": 0.0014693648726860076,
+                "asserted": false
+              },
+              {
+                "method": "attn-mixed@20%",
+                "measured_MiB": 20.54912567138672,
+                "logical_MiB": 20.52685546875,
+                "off_pct": 0.10849300649395932,
+                "asserted": false
+              }
+            ],
+            "prefill_peak_MiB_batch1": {
+              "tokens": 4096,
+              "peak_MiB": 994.59375
+            }
+          },
+          "longbench_tasks_kept": [
+            "longbench_hotpotqa",
+            "longbench_2wikimqa",
+            "longbench_multifieldqa_en",
+            "longbench_qasper",
+            "longbench_passage_retrieval_en"
+          ],
+          "end": "2026-11-18T17:48:42+00:00"
+        }
+      ]
+    }
+  }
+}

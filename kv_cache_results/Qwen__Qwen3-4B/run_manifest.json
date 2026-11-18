@@ -1,0 +1,152 @@
+{
+  "model_id": "Qwen/Qwen3-4B",
+  "preset": "full",
+  "versions": {
+    "torch": "2.14.1+cu130",
+    "transformers": "4.57.1",
+    "accelerate": "1.15.0",
+    "pandas": "2.2.3",
+    "numpy": "2.4.6"
+  },
+  "python": "3.13.16",
+  "gpu": {
+    "name": "NVIDIA L4",
+    "memory_GiB": 22.0,
+    "bf16": true,
+    "cuda": "13.0"
+  },
+  "notebook_git_commit": null,
+  "last_session_started": "2026-11-18T06:21:41+00:00",
+  "config": {
+    "PRESET": "full",
+    "MODEL_ID": "Qwen/Qwen3-4B",
+    "GPU_PROFILE": "auto",
+    "RESOLVED_GPU_PROFILE": "l4",
+    "RUN_E0": true,
+    "RUN_E5": true,
+    "RUN_E2": true,
+    "RUN_E1": true,
+    "RUN_E3": true,
+    "RUN_E4": true,
+    "RUN_E6": true,
+    "RUN_BENCH": true,
+    "RUN_MMLU": false,
+    "RUN_LONGBENCH": false,
+    "SINK_TOKENS": 4,
+    "OBS_WINDOW": 32,
+    "POOL_KERNEL": 7,
+    "LAMBDA": 1.0,
+    "TIER_SPLIT": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "QUERY_AWARE": false,
+    "HAYSTACK": "natural",
+    "EXP_DOCS": 30,
+    "RETRIEVAL_FACTS": 20,
+    "RETRIEVAL_TOKENS": 3000,
+    "EXP_GENERATE": false,
+    "KEEP_GRID": [
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "E5_BUDGETS": [
+      0.1,
+      0.2,
+      "int4"
+    ],
+    "PROBE_BUDGETS": [
+      0.6,
+      0.8
+    ],
+    "AUTO_PROBE_BUDGETS": true,
+    "E1_LAYER_STRIDE": 1,
+    "HEADROOM_MIN": 0.7,
+    "ENFORCE_HEADROOM": true,
+    "BENCH_BATCH": 2,
+    "BENCH_SEQ_LEN": 4096,
+    "BENCH_DECODE_TOKENS": 64,
+    "BENCH_REPEATS": 3,
+    "MAX_INPUT_TOKENS": 4096,
+    "MMLU_TASKS": [
+      "mmlu"
+    ],
+    "MMLU_LIMIT": 10,
+    "MMLU_FEWSHOT": 5,
+    "LONGBENCH_TASKS": [
+      "longbench_hotpotqa",
+      "longbench_2wikimqa",
+      "longbench_multifieldqa_en",
+      "longbench_qasper",
+      "longbench_passage_retrieval_en"
+    ],
+    "LONGBENCH_LIMIT": 200,
+    "LONGBENCH_CHAT_TEMPLATE": true,
+    "LONGBENCH_MIN_FULL": 0.1,
+    "SEED": 42
+  },
+  "model_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "dtype": "torch.bfloat16",
+  "model_dims": {
+    "layers": 36,
+    "kv_heads": 8,
+    "head_dim": 128,
+    "query_heads": 32,
+    "max_positions": 40960
+  },
+  "headroom": {
+    "haystack": "natural",
+    "full_tf_exact": 1.0,
+    "min": 0.7
+  },
+  "experiments": {
+    "e0": {
+      "started": "2026-11-18T06:27:04+00:00",
+      "finished": "2026-11-18T07:55:39+00:00",
+      "minutes_this_session": 88.6
+    },
+    "e5": {
+      "started": "2026-11-18T07:55:39+00:00",
+      "finished": "2026-11-18T09:08:07+00:00",
+      "minutes_this_session": 72.5
+    },
+    "e2": {
+      "started": "2026-11-18T09:08:07+00:00",
+      "finished": "2026-11-18T09:42:04+00:00",
+      "minutes_this_session": 34.0
+    },
+    "e1": {
+      "started": "2026-11-18T09:42:04+00:00",
+      "finished": "2026-11-18T11:07:54+00:00",
+      "minutes_this_session": 85.8
+    },
+    "e3": {
+      "started": "2026-11-18T11:07:54+00:00",
+      "finished": "2026-11-18T12:24:54+00:00",
+      "minutes_this_session": 77.0
+    },
+    "e4": {
+      "started": "2026-11-18T12:24:54+00:00",
+      "finished": "2026-11-18T13:26:13+00:00",
+      "minutes_this_session": 61.3
+    },
+    "e6": {
+      "started": "2026-11-18T13:26:13+00:00",
+      "finished": "2026-11-18T14:11:11+00:00",
+      "minutes_this_session": 45.0
+    },
+    "bench": {
+      "started": "2026-11-18T14:11:11+00:00"
+    }
+  },
+  "probe_budgets": [
+    0.7,
+    0.9
+  ]
+}

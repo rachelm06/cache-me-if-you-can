@@ -1,0 +1,6 @@
+method,family,kind,budget,lambda,task,metric,value,kv_bytes_pct,tokens_retained_frac,unique_positions,unique_positions_frac,mean_layer_jaccard,frac_tokens_16bit,frac_tokens_8bit,frac_tokens_4bit,frac_tokens_2bit
+consistent-select@70%,consistent-select,select,0.7,0.0,longbench_hotpotqa,score,0.595620817854926,69.99299308685409,0.6999299314774965,6502.361052631579,0.6982959185775958,1.0,0.6999299314774965,0.0,0.0,0.0
+consistent-select@70%,consistent-select,select,0.7,0.0,longbench_2wikimqa,score,0.4244325396825397,69.99299308685409,0.6999299314774965,6502.361052631579,0.6982959185775958,1.0,0.6999299314774965,0.0,0.0,0.0
+consistent-select@70%,consistent-select,select,0.7,0.0,longbench_multifieldqa_en,score,0.4740772683618232,69.99299308685409,0.6999299314774965,6502.361052631579,0.6982959185775958,1.0,0.6999299314774965,0.0,0.0,0.0
+consistent-select@70%,consistent-select,select,0.7,0.0,longbench_qasper,score,0.42560255545281905,69.99299308685409,0.6999299314774965,6502.361052631579,0.6982959185775958,1.0,0.6999299314774965,0.0,0.0,0.0
+consistent-select@70%,consistent-select,select,0.7,0.0,longbench_passage_retrieval_en,score,1.0,69.99299308685409,0.6999299314774965,6502.361052631579,0.6982959185775958,1.0,0.6999299314774965,0.0,0.0,0.0

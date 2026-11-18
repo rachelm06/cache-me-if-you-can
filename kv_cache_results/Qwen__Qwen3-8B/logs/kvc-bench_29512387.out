@@ -1,0 +1,483 @@
+=== 2026-11-18T02:06:36-05:00 job=29512387 attempt=0 host=node3407 lane=bench preset=full model=Qwen/Qwen3-8B
+NVIDIA L40S, 590.48.01, 46068 MiB
+Input Notebook:  kv_cache_consolidated.ipynb
+Output Notebook: runs/bench_full_Qwen__Qwen3-8B_29512387_a0.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: kvcache
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+/home/alsalali/orcd/pool/venvs/kvcache/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+
+{'torch': '2.11.0+cu128', 'transformers': '4.57.1', 'accelerate': '1.16.0', 'datasets': '3.6.0', 'lm_eval': '0.4.11', 'papermill': '2.7.0', 'numpy': '2.5.5', 'pandas': '2.3.3', 'python': '3.12.13', 'cuda_runtime': '12.8'}
+{'name': 'NVIDIA L40S', 'memory_GiB': 44.4, 'driver': '590.48.01', 'uuid': 'GPU-7db9db50-9924-d7ad-6194-da5c333e6862'}
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+PRESET=full  MODEL_ID=Qwen/Qwen3-8B  LANE=bench
+runs: ['RUN_BENCH']
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+Results: /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B
+Attempt 0 of job 29512387 on node3407
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+Registered attention backend 'kv_compress'.
+
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+Ending Cell 17-----------------------------------------
+Executing Cell 18--------------------------------------
+Ending Cell 18-----------------------------------------
+Executing Cell 19--------------------------------------
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:00<00:00,  8.88it/s]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:00<00:00, 12.31it/s]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 15.55it/s]
+
+
+Qwen/Qwen3-8B | cuda:0 | torch.bfloat16 | layers/kv-heads/head-dim = (36, 8, 128) | max input 4096
+Qwen3Config {
+  "architectures": [
+    "Qwen3ForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "head_dim": 128,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 12288,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 40960,
+  "max_window_layers": 36,
+  "model_type": "qwen3",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 36,
+  "num_key_value_heads": 8,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 1000000,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.57.1",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 151936
+}
+
+
+Ending Cell 19-----------------------------------------
+Executing Cell 20--------------------------------------
+1. (layers, kv heads, head dim) = (36, 8, 128); KV per token = 144 KiB
+2. every digit of 200 sampled 5-digit codes is its own token: chance NLL = ln 10 per digit
+
+3. prefill + extend vs plain forward over 721 tokens (last 64 compared): argmax agreement 1.000, mean |Δlogit| 0.121, max 5.188
+
+4. measured KV memory vs byte accounting:
+
+            method  measured_MiB  logical_MiB  off_pct  asserted
+0             full       102.125      101.391    0.725      True
+1       quant-int8        60.012       59.999    0.022      True
+2       quant-int4        35.596       35.583    0.038      True
+3       quant-int2        23.397       23.375    0.095      True
+4  attn-select@20%        20.250       20.250    0.001     False
+5   attn-mixed@20%        20.549       20.527    0.108     False
+5. fused SDPA kernels available for prefill / extend / decode; prefill peak at 1 x 4096 tokens: 995 MiB
+
+Ending Cell 20-----------------------------------------
+Executing Cell 21--------------------------------------
+156 candidate tokens, 36 layers. Most and least 'common' tokens (d_i):
+  high d_i (low ILF): [('.', 36), ('.', 36), ('.', 35), ('.', 34), ('Ġnight', 30), ('ĠVisitors', 29), ('Ġmust', 29), ('ĠVisitors', 28)]
+  low d_i (high ILF): [('Ġroom', 0), ('Ġholds', 0), ('Ġmaps', 0), ('Ġblue', 0), ('Ġroom', 0), ('Ġbrass', 0), ('Ġgreen', 0), ('Ġroom', 0)]
+
+         selection  kv_bytes_pct  unique_positions  unique_positions_frac  \
+0  attention (λ=0)        34.574              90.0                  0.592   
+1      ILF (λ=1.0)        34.574             140.0                  0.921   
+
+   mean_layer_jaccard                          answer  
+0               0.357   room that holds the brass key  
+1               0.190        blue room. The answer is  
+Ending Cell 21-----------------------------------------
+Executing Cell 22--------------------------------------
+Ending Cell 22-----------------------------------------
+Executing Cell 23--------------------------------------
+Using the latest cached version of the dataset since Salesforce/wikitext couldn't be found on the Hugging Face Hub (offline mode is enabled).
+
+Found the latest cached dataset configuration 'wikitext-2-raw-v1' at /home/alsalali/orcd/pool/hf/datasets/Salesforce___wikitext/wikitext-2-raw-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3 (last modified on Wed Nov 18 01:12:06 2026).
+
+30 natural prose documents, 20 facts each, 3253 tokens in document 0
+
+Ending Cell 23-----------------------------------------
+Executing Cell 24--------------------------------------
+Ending Cell 24-----------------------------------------
+Executing Cell 25--------------------------------------
+Ending Cell 25-----------------------------------------
+Executing Cell 26--------------------------------------
+Ending Cell 26-----------------------------------------
+Executing Cell 27--------------------------------------
+Ending Cell 27-----------------------------------------
+Executing Cell 28--------------------------------------
+fact 0 tokens: ['ĠThe', 'Ġsecret', 'Ġcode', 'Ġof', 'ĠBod', 'hi', 'Ġis', 'Ġ', '4', '2', '8', '3', '4', '.'] | code: ['4', '2', '8', '3', '4'] | gold answer: ['Ġ', '4', '2', '8', '3', '4']
+
+1. max |logit difference|, full cache with vs without a scoring suffix: 0.00e+00
+
+2. consistent selection: layer Jaccard 1.000; mix(0) agrees with plain attention on 1.0000 of entries
+
+3. knock-out plans evict exactly the fact tokens: 9900 entries = 36 layers x 275 fact tokens
+
+4. oracle-keep @20%: needle kept 1.00 (plain attention 0.14); KV bytes 19.98% vs 19.98%
+5. arm keys are stable and distinguish haystack, decoding and tags
+
+Ending Cell 28-----------------------------------------
+Executing Cell 29--------------------------------------
+Ending Cell 29-----------------------------------------
+Executing Cell 30--------------------------------------
+Ending Cell 30-----------------------------------------
+Executing Cell 31--------------------------------------
+Ending Cell 31-----------------------------------------
+Executing Cell 32--------------------------------------
+Ending Cell 32-----------------------------------------
+Executing Cell 33--------------------------------------
+Ending Cell 33-----------------------------------------
+Executing Cell 34--------------------------------------
+Ending Cell 34-----------------------------------------
+Executing Cell 35--------------------------------------
+Ending Cell 35-----------------------------------------
+Executing Cell 36--------------------------------------
+Ending Cell 36-----------------------------------------
+Executing Cell 37--------------------------------------
+Ending Cell 37-----------------------------------------
+Executing Cell 38--------------------------------------
+Ending Cell 38-----------------------------------------
+Executing Cell 39--------------------------------------
+Ending Cell 39-----------------------------------------
+Executing Cell 40--------------------------------------
+Ending Cell 40-----------------------------------------
+Executing Cell 41--------------------------------------
+Ending Cell 41-----------------------------------------
+Executing Cell 42--------------------------------------
+Ending Cell 42-----------------------------------------
+Executing Cell 43--------------------------------------
+Ending Cell 43-----------------------------------------
+Executing Cell 44--------------------------------------
+Ending Cell 44-----------------------------------------
+Executing Cell 45--------------------------------------
+Ending Cell 45-----------------------------------------
+Executing Cell 46--------------------------------------
+22 methods, batch 4 x 4096 tokens, repeats to run: [0, 1, 2]
+
+warm-up pass: 47 s
+
+repeat 0  consistent-select@10%: 31.2 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 0             quant-int2: 81.2 ms/token, KV 449 MiB logical / 451 measured
+
+repeat 0                   full: 65.8 ms/token, KV 2304 MiB logical / 2305 measured
+
+repeat 0        attn-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 0          ilf-mixed@10%: 37.1 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 0        ilf-select@int8: 46.6 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 0        attn-select@10%: 31.2 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 0          ilf-mixed@20%: 45.2 ms/token, KV 466 MiB logical / 482 measured
+
+repeat 0             quant-int8: 77.1 ms/token, KV 1305 MiB logical / 1307 measured
+
+repeat 0         attn-mixed@20%: 45.3 ms/token, KV 466 MiB logical / 482 measured
+
+repeat 0        attn-mixed@int4: 57.1 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 0        attn-mixed@int8: 77.0 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 0        ilf-select@int4: 35.7 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 0         attn-mixed@10%: 37.0 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 0         ilf-mixed@int8: 77.0 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 0       attn-select@int8: 46.6 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 0       attn-select@int4: 35.7 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 0         ilf-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 0         ilf-mixed@int4: 57.1 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 0             quant-int4: 80.3 ms/token, KV 734 MiB logical / 736 measured
+
+repeat 0         ilf-select@10%: 31.2 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 0  consistent-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 1             quant-int8: 77.1 ms/token, KV 1305 MiB logical / 1307 measured
+
+repeat 1         ilf-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 1        attn-select@10%: 31.3 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 1        attn-mixed@int4: 57.2 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 1          ilf-mixed@20%: 45.4 ms/token, KV 466 MiB logical / 482 measured
+
+repeat 1             quant-int2: 81.3 ms/token, KV 449 MiB logical / 451 measured
+
+repeat 1        attn-mixed@int8: 77.1 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 1  consistent-select@10%: 31.4 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 1          ilf-mixed@10%: 37.2 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 1         ilf-mixed@int4: 57.1 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 1                   full: 65.9 ms/token, KV 2304 MiB logical / 2305 measured
+
+repeat 1        attn-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 1         attn-mixed@10%: 37.1 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 1         ilf-select@10%: 31.3 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 1       attn-select@int4: 35.8 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 1       attn-select@int8: 46.7 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 1  consistent-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 1        ilf-select@int8: 46.7 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 1         ilf-mixed@int8: 77.1 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 1        ilf-select@int4: 35.8 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 1         attn-mixed@20%: 45.4 ms/token, KV 466 MiB logical / 482 measured
+
+repeat 1             quant-int4: 80.3 ms/token, KV 734 MiB logical / 736 measured
+
+repeat 2        ilf-select@int4: 35.8 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 2       attn-select@int8: 46.7 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 2        ilf-select@int8: 46.7 ms/token, KV 1304 MiB logical / 1306 measured
+
+repeat 2             quant-int2: 81.3 ms/token, KV 449 MiB logical / 451 measured
+
+repeat 2         ilf-select@10%: 31.2 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 2       attn-select@int4: 35.8 ms/token, KV 734 MiB logical / 735 measured
+
+repeat 2          ilf-mixed@10%: 37.1 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 2        attn-select@10%: 31.3 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 2                   full: 65.9 ms/token, KV 2304 MiB logical / 2305 measured
+
+repeat 2        attn-mixed@int8: 77.1 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 2             quant-int8: 77.2 ms/token, KV 1305 MiB logical / 1307 measured
+
+repeat 2         ilf-select@20%: 33.2 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 2  consistent-select@20%: 33.2 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 2          ilf-mixed@20%: 45.3 ms/token, KV 466 MiB logical / 482 measured
+
+repeat 2             quant-int4: 80.2 ms/token, KV 734 MiB logical / 736 measured
+
+repeat 2         attn-mixed@10%: 37.0 ms/token, KV 232 MiB logical / 240 measured
+
+repeat 2        attn-mixed@int4: 57.1 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 2         ilf-mixed@int4: 57.1 ms/token, KV 738 MiB logical / 760 measured
+
+repeat 2  consistent-select@10%: 31.2 ms/token, KV 230 MiB logical / 258 measured
+
+repeat 2         ilf-mixed@int8: 77.0 ms/token, KV 1223 MiB logical / 1245 measured
+
+repeat 2        attn-select@20%: 33.1 ms/token, KV 461 MiB logical / 462 measured
+
+repeat 2         attn-mixed@20%: 45.3 ms/token, KV 466 MiB logical / 482 measured
+
+Saved /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B/memory_latency_raw.csv
+measured KV memory more than 5% off the byte accounting: ['consistent-select@10%', 'attn-select@10%', 'ilf-select@10%']
+Saved /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B/memory_latency.csv
+
+                   method budget  kv_bytes_pct  kv_MiB_logical  \
+0   consistent-select@10%    0.1          9.99          230.06   
+1              quant-int2    1.0         19.47          448.66   
+2                    full    1.0        100.00         2304.00   
+3         attn-select@20%    0.2         20.00          460.69   
+4           ilf-mixed@10%    0.1         10.07          231.94   
+5         ilf-select@int8   int8         56.62         1304.44   
+6         attn-select@10%    0.1          9.99          230.06   
+7           ilf-mixed@20%    0.2         20.21          465.73   
+8              quant-int8    1.0         56.66         1305.49   
+9          attn-mixed@20%    0.2         20.21          465.73   
+10        attn-mixed@int4   int4         32.02          737.79   
+11        attn-mixed@int8   int8         53.07         1222.65   
+12        ilf-select@int4   int4         31.84          733.50   
+13         attn-mixed@10%    0.1         10.07          231.94   
+14         ilf-mixed@int8   int8         53.07         1222.65   
+15       attn-select@int8   int8         56.62         1304.44   
+16       attn-select@int4   int4         31.84          733.50   
+17         ilf-select@20%    0.2         20.00          460.69   
+18         ilf-mixed@int4   int4         32.02          737.79   
+19             quant-int4    1.0         31.87          734.27   
+20         ilf-select@10%    0.1          9.99          230.06   
+21  consistent-select@20%    0.2         20.00          460.69   
+
+    kv_MiB_measured  prefill_compress_ms  prefill_peak_MiB  \
+0            257.87              1752.79           3972.28   
+1            451.30              1799.45           3970.03   
+2           2305.16              1721.14           3970.03   
+3            461.96              1755.99           3972.28   
+4            239.89              1778.78           3972.28   
+5           1305.60              1758.37           3972.28   
+6            257.87              1751.63           3972.28   
+7            482.39              1780.94           3972.28   
+8           1307.28              1799.07           3970.03   
+9            482.39              1782.34           3972.28   
+10           759.72              1781.76           3972.28   
+11          1245.25              1789.81           3972.28   
+12           734.66              1752.30           3972.28   
+13           239.89              1774.97           3972.28   
+14          1245.25              1800.38           3972.28   
+15          1305.60              1759.58           3972.28   
+16           734.66              1759.75           3972.28   
+17           461.96              1756.20           3972.28   
+18           759.72              1783.81           3972.28   
+19           735.88              1799.37           3970.03   
+20           257.87              1750.12           3972.28   
+21           461.96              1758.72           3972.28   
+
+    decode_ms_per_token  decode_peak_MiB  decode_ms_per_token_iqr  \
+0                 31.23           557.78                     0.08   
+1                 81.27           834.76                     0.03   
+2                 65.87          4907.32                     0.02   
+3                 33.08          1016.79                     0.03   
+4                 37.10           441.18                     0.06   
+5                 46.68          2797.13                     0.04   
+6                 31.31           557.78                     0.06   
+7                 45.35           818.18                     0.10   
+8                 77.12          1691.63                     0.04   
+9                 45.31           818.18                     0.05   
+10                57.08          1260.77                     0.07   
+11                77.05          2057.50                     0.08   
+12                35.83          1591.82                     0.04   
+13                37.04           441.18                     0.05   
+14                77.02          2057.50                     0.03   
+15                46.69          2797.13                     0.06   
+16                35.76          1591.82                     0.06   
+17                33.15          1016.79                     0.05   
+18                57.10          1260.77                     0.02   
+19                80.29          1119.34                     0.07   
+20                31.25           557.78                     0.04   
+21                33.14          1016.79                     0.02   
+
+    prefill_compress_ms_iqr  repeats  measured_vs_logical_pct  memory_flag  
+0                      2.55        3                    12.09         True  
+1                      4.06        3                     0.59        False  
+2                      5.84        3                     0.05        False  
+3                      7.95        3                     0.28        False  
+4                      2.70        3                     3.43        False  
+5                     14.11        3                     0.09        False  
+6                      3.30        3                    12.09         True  
+7                      3.54        3                     3.58        False  
+8                      2.05        3                     0.14        False  
+9                      9.65        3                     3.58        False  
+10                     1.85        3                     2.97        False  
+11                     5.70        3                     1.85        False  
+12                     1.17        3                     0.16        False  
+13                     2.83        3                     3.43        False  
+14                     8.61        3                     1.85        False  
+15                     8.36        3                     0.09        False  
+16                     1.34        3                     0.16        False  
+17                     2.51        3                     0.28        False  
+18                     4.95        3                     2.97        False  
+19                     0.85        3                     0.22        False  
+20                     4.20        3                    12.09         True  
+21                     5.86        3                     0.28        False  
+Ending Cell 46-----------------------------------------
+Executing Cell 47--------------------------------------
+Ending Cell 47-----------------------------------------
+Executing Cell 48--------------------------------------
+Ending Cell 48-----------------------------------------
+Executing Cell 49--------------------------------------
+Ending Cell 49-----------------------------------------
+Executing Cell 50--------------------------------------
+Ending Cell 50-----------------------------------------
+Executing Cell 51--------------------------------------
+done: lane bench, attempt 0, results in /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B
+
+Ending Cell 51-----------------------------------------
+Executing Cell 52--------------------------------------
+Ending Cell 52-----------------------------------------
+=== 2026-11-18T02:14:09-05:00 papermill exited with 0 (executed notebook: runs/bench_full_Qwen__Qwen3-8B_29512387_a0.ipynb)
