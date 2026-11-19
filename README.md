@@ -14,6 +14,7 @@ selection? This branch holds the two main runs of the diagnostic notebook (exper
 | Memory and latency benchmark | complete (22 methods, batch 4 × 4096 tokens, 3 repeats) | started, no results saved |
 | LongBench | 5 tasks, ≤ 200 questions each, 10 methods, inputs up to 32768 tokens | not run |
 | MMLU | not run | not run |
+| Observation-window screen | complete (137 arms: scoring windows of 8 tokens to the whole prefix, attention and ILF, 4 budgets) | not run |
 | Probe budgets (from E0) | 0.7, 0.9 | 0.7, 0.9 |
 
 Both runs use the `full` preset: 30 documents × 20 facts × 3000 tokens of natural prose (WikiText-2). The cache
@@ -30,10 +31,13 @@ kv_cache_results/
     e0_* … e6_*                   per-experiment tables (*_raw.csv: one row per question) and figures
     memory_latency*.csv           memory and decode-latency benchmark
     longbench.csv, longbench/     LongBench scores (one file per method in longbench/)
-    summary.csv, figures_index.md every experiment's summary in one table (benchmark and LongBench columns by method)
+    window_screen*                observation-window screen (notebook §16b, lane `window`): tables, paired table, figures
+    summary.csv, figures_index.md every experiment's summary (window screen included) in one table, with
+                                  benchmark and LongBench columns by method
     run_manifest.json             versions, GPU, job attempts, probe budgets, every knob
     notebooks/                    executed notebooks: final_* has every table and figure;
-                                  exp-a / exp-b / bench are the lanes as they ran; optional_* is LongBench
+                                  exp-a / exp-b / bench are the lanes as they ran; optional_* is LongBench;
+                                  window_* is the window screen (run after final_*, so final_* does not show it)
     logs/                         Slurm logs of those jobs (the LongBench job was preempted twice)
   Qwen__Qwen3-4B/                 Colab run (copied from Drive, MyDrive/kv_cache_results2_l4/)
     e0_* … e6_*, run_manifest.json
@@ -57,6 +61,7 @@ Then from the repo root:
 ```bash
 bash cluster/submit.sh Qwen/Qwen3-8B        # E0–E6 in two lanes, the benchmark, then a final pass
 sbatch -J kvc-longbench --time=24:00:00 cluster/run.sbatch optional full Qwen/Qwen3-8B -p RUN_LONGBENCH True
+sbatch -J kvc-window --time=04:00:00 cluster/run.sbatch window full Qwen/Qwen3-8B   # scoring-window screen
 source cluster/env.sh && python cluster/summarize.py kv_cache_results/Qwen__Qwen3-8B   # rebuild summaries, no GPU
 ```
 

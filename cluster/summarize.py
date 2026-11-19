@@ -43,14 +43,14 @@ SUMMARY_SPECS = [("E0 budget sweep", "e0_budget_sweep"), ("E5 tier split", "e5_t
                  ("E2 consistency", "e2_consistency"), ("E1 knock-out", "e1_knockout"),
                  ("E1 single layer", "e1_single_layer"), ("E1 oracle-keep", "e1_oracle_keep"),
                  ("E3 scoring signal", "e3_scoring_signal"), ("E4 haystack", "e4_haystack"),
-                 ("E6 position/content diversity", "e6_content_diversity")]
-SUMMARY_LEAD = ["experiment", "method", "arm", "selector", "signal", "scheme", "layers_kept", "layer", "ranking", "split",
+                 ("E6 position/content diversity", "e6_content_diversity"), ("Window screen", "window_screen")]
+SUMMARY_LEAD = ["experiment", "method", "arm", "selector", "signal", "reduce", "obs_window", "scheme", "layers_kept", "layer", "ranking", "split",
                 "haystack", "budget", "kind", "kv_bytes_pct", "tf_exact", "tf_digit_acc", "gold_nll", "correct",
                 "digit_acc", "needle_kept_frac", "evict_ratio", "code_layers_full", "mean_layer_jaccard",
                 "unique_positions_frac", "tokens_retained_frac"]
 FIGURE_SECTIONS = [("e0", "E0 budget sweep"), ("e5", "E5 tier split"), ("e2", "E2 consistency"),
                    ("e1", "E1 layer coverage"), ("e3", "E3 scoring signal"), ("e4", "E4 haystack"),
-                   ("e6", "E6 position and content diversity")]
+                   ("e6", "E6 position and content diversity"), ("window_screen", "Observation-window screen")]
 
 
 def consolidated(out, manifest):

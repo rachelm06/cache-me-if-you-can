@@ -1,0 +1,702 @@
+=== 2026-11-18T22:28:17-05:00 job=29602058 attempt=0 host=node3615 lane=window preset=full model=Qwen/Qwen3-8B
+NVIDIA L40S, 590.48.01, 46068 MiB
+Input Notebook:  kv_cache_consolidated.ipynb
+Output Notebook: runs/window_full_Qwen__Qwen3-8B_29602058_a0.ipynb
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: kvcache
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+/home/alsalali/orcd/pool/venvs/kvcache/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+
+{'torch': '2.11.0+cu128', 'transformers': '4.57.1', 'accelerate': '1.16.0', 'datasets': '3.6.0', 'lm_eval': '0.4.11', 'papermill': '2.7.0', 'numpy': '2.5.5', 'pandas': '2.3.3', 'python': '3.12.13', 'cuda_runtime': '12.8'}
+{'name': 'NVIDIA L40S', 'memory_GiB': 44.4, 'driver': '590.48.01', 'uuid': 'GPU-2b57362e-3f86-8b73-4ed8-31a48dc378e1'}
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+PRESET=full  MODEL_ID=Qwen/Qwen3-8B  LANE=window
+runs: ['RUN_EW']
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+Results: /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B
+Attempt 0 of job 29602058 on node3615
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+Registered attention backend 'kv_compress'.
+
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+Ending Cell 17-----------------------------------------
+Executing Cell 18--------------------------------------
+Ending Cell 18-----------------------------------------
+Executing Cell 19--------------------------------------
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]
+Loading checkpoint shards:  20%|██        | 1/5 [00:02<00:08,  2.23s/it]
+Loading checkpoint shards:  40%|████      | 2/5 [00:05<00:08,  2.70s/it]
+Loading checkpoint shards:  60%|██████    | 3/5 [00:08<00:05,  2.93s/it]
+Loading checkpoint shards:  80%|████████  | 4/5 [00:10<00:02,  2.72s/it]
+Loading checkpoint shards: 100%|██████████| 5/5 [00:10<00:00,  2.17s/it]
+
+
+Qwen/Qwen3-8B | cuda:0 | torch.bfloat16 | layers/kv-heads/head-dim = (36, 8, 128) | max input 32768
+Qwen3Config {
+  "architectures": [
+    "Qwen3ForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "head_dim": 128,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 12288,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 40960,
+  "max_window_layers": 36,
+  "model_type": "qwen3",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 36,
+  "num_key_value_heads": 8,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 1000000,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.57.1",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 151936
+}
+
+
+Ending Cell 19-----------------------------------------
+Executing Cell 20--------------------------------------
+1. (layers, kv heads, head dim) = (36, 8, 128); KV per token = 144 KiB
+2. every digit of 200 sampled 5-digit codes is its own token: chance NLL = ln 10 per digit
+
+3. prefill + extend vs plain forward over 721 tokens (last 64 compared): argmax agreement 1.000, mean |Δlogit| 0.121, max 5.188
+
+4. measured KV memory vs byte accounting:
+
+            method  measured_MiB  logical_MiB  off_pct  asserted
+0             full       102.125      101.391    0.725      True
+1       quant-int8        60.012       59.999    0.022      True
+2       quant-int4        35.596       35.583    0.038      True
+3       quant-int2        23.397       23.375    0.095      True
+4  attn-select@20%        20.250       20.250    0.001     False
+5   attn-mixed@20%        20.549       20.527    0.108     False
+5. fused SDPA kernels available for prefill / extend / decode; prefill peak at 1 x 4096 tokens: 995 MiB
+
+Ending Cell 20-----------------------------------------
+Executing Cell 21--------------------------------------
+156 candidate tokens, 36 layers. Most and least 'common' tokens (d_i):
+  high d_i (low ILF): [('.', 36), ('.', 36), ('.', 35), ('.', 34), ('Ġnight', 30), ('ĠVisitors', 29), ('Ġmust', 29), ('ĠVisitors', 28)]
+  low d_i (high ILF): [('Ġroom', 0), ('Ġholds', 0), ('Ġmaps', 0), ('Ġblue', 0), ('Ġroom', 0), ('Ġbrass', 0), ('Ġgreen', 0), ('Ġroom', 0)]
+
+         selection  kv_bytes_pct  unique_positions  unique_positions_frac  \
+0  attention (λ=0)        34.574              90.0                  0.592   
+1      ILF (λ=1.0)        34.574             140.0                  0.921   
+
+   mean_layer_jaccard                          answer  
+0               0.357   room that holds the brass key  
+1               0.190        blue room. The answer is  
+Ending Cell 21-----------------------------------------
+Executing Cell 22--------------------------------------
+Ending Cell 22-----------------------------------------
+Executing Cell 23--------------------------------------
+Using the latest cached version of the dataset since Salesforce/wikitext couldn't be found on the Hugging Face Hub (offline mode is enabled).
+
+Found the latest cached dataset configuration 'wikitext-2-raw-v1' at /home/alsalali/orcd/pool/hf/datasets/Salesforce___wikitext/wikitext-2-raw-v1/0.0.0/b08601e04326c79dfdd32d625aee71d232d685c3 (last modified on Wed Nov 18 01:12:06 2026).
+
+30 natural prose documents, 20 facts each, 3253 tokens in document 0
+
+Ending Cell 23-----------------------------------------
+Executing Cell 24--------------------------------------
+Ending Cell 24-----------------------------------------
+Executing Cell 25--------------------------------------
+Ending Cell 25-----------------------------------------
+Executing Cell 26--------------------------------------
+Ending Cell 26-----------------------------------------
+Executing Cell 27--------------------------------------
+Ending Cell 27-----------------------------------------
+Executing Cell 28--------------------------------------
+fact 0 tokens: ['ĠThe', 'Ġsecret', 'Ġcode', 'Ġof', 'ĠBod', 'hi', 'Ġis', 'Ġ', '4', '2', '8', '3', '4', '.'] | code: ['4', '2', '8', '3', '4'] | gold answer: ['Ġ', '4', '2', '8', '3', '4']
+
+1. max |logit difference|, full cache with vs without a scoring suffix: 0.00e+00
+
+2. consistent selection: layer Jaccard 1.000; mix(0) agrees with plain attention on 1.0000 of entries
+
+3. knock-out plans evict exactly the fact tokens: 9900 entries = 36 layers x 275 fact tokens
+
+4. oracle-keep @20%: needle kept 1.00 (plain attention 0.14); KV bytes 19.98% vs 19.98%
+5. arm keys are stable and distinguish haystack, decoding and tags
+
+Ending Cell 28-----------------------------------------
+Executing Cell 29--------------------------------------
+Ending Cell 29-----------------------------------------
+Executing Cell 30--------------------------------------
+                        full [window]  cached: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 1.00  KV bytes 100.0%  exact 1.000
+
+headroom gate: full-cache tf-exact on natural prose = 1.000 (threshold 0.7) -> passed
+
+Ending Cell 30-----------------------------------------
+Executing Cell 31--------------------------------------
+Ending Cell 31-----------------------------------------
+Executing Cell 32--------------------------------------
+Ending Cell 32-----------------------------------------
+Executing Cell 33--------------------------------------
+Ending Cell 33-----------------------------------------
+Executing Cell 34--------------------------------------
+Ending Cell 34-----------------------------------------
+Executing Cell 35--------------------------------------
+Ending Cell 35-----------------------------------------
+Executing Cell 36--------------------------------------
+Ending Cell 36-----------------------------------------
+Executing Cell 37--------------------------------------
+Ending Cell 37-----------------------------------------
+Executing Cell 38--------------------------------------
+Ending Cell 38-----------------------------------------
+Executing Cell 39--------------------------------------
+Ending Cell 39-----------------------------------------
+Executing Cell 40--------------------------------------
+Ending Cell 40-----------------------------------------
+Executing Cell 41--------------------------------------
+Ending Cell 41-----------------------------------------
+Executing Cell 42--------------------------------------
+Ending Cell 42-----------------------------------------
+Executing Cell 43--------------------------------------
+Ending Cell 43-----------------------------------------
+Executing Cell 44--------------------------------------
+Ending Cell 44-----------------------------------------
+Executing Cell 45--------------------------------------
+Ending Cell 45-----------------------------------------
+Executing Cell 46--------------------------------------
+137 arms; scoring windows [8, 16, 32, 64, 128, 256, 512, 1024, 2048, 'all'] ('all' = the whole prefix, 3267 tokens on average); always-kept window 32; budgets [0.3, 0.5, 0.7, 0.9]
+
+                        full [window]     33s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 1.00  KV bytes 100.0%
+
+     attention/obs8/mean@30% [obs8-mean]     30s: tf-exact 0.073  digit 0.238  gold NLL 2.23  needle kept 0.32  KV bytes 30.0%
+
+           ilf/obs8/mean@30% [obs8-mean]     30s: tf-exact 0.033  digit 0.264  gold NLL 2.15  needle kept 0.32  KV bytes 30.0%
+
+    attention/obs16/mean@30% [obs16-mean]     30s: tf-exact 0.047  digit 0.197  gold NLL 2.37  needle kept 0.24  KV bytes 30.0%
+
+          ilf/obs16/mean@30% [obs16-mean]     30s: tf-exact 0.020  digit 0.245  gold NLL 2.20  needle kept 0.28  KV bytes 30.0%
+
+    attention/obs32/mean@30% [obs32-mean]     30s: tf-exact 0.032  digit 0.182  gold NLL 2.38  needle kept 0.21  KV bytes 30.0%
+
+          ilf/obs32/mean@30% [obs32-mean]     30s: tf-exact 0.013  digit 0.226  gold NLL 2.24  needle kept 0.26  KV bytes 30.0%
+
+attention/obs64/mean_visible@30% [obs64-mean_visible]     30s: tf-exact 0.087  digit 0.224  gold NLL 2.27  needle kept 0.23  KV bytes 30.0%
+
+  ilf/obs64/mean_visible@30% [obs64-mean_visible]     30s: tf-exact 0.042  digit 0.260  gold NLL 2.15  needle kept 0.26  KV bytes 30.0%
+
+attention/obs128/mean_visible@30% [obs128-mean_visible]     30s: tf-exact 0.450  digit 0.643  gold NLL 1.12  needle kept 0.53  KV bytes 30.0%
+
+ ilf/obs128/mean_visible@30% [obs128-mean_visible]     30s: tf-exact 0.160  digit 0.421  gold NLL 1.74  needle kept 0.30  KV bytes 30.0%
+
+attention/obs256/mean_visible@30% [obs256-mean_visible]     31s: tf-exact 0.260  digit 0.452  gold NLL 1.60  needle kept 0.41  KV bytes 30.0%
+
+ ilf/obs256/mean_visible@30% [obs256-mean_visible]     31s: tf-exact 0.170  digit 0.446  gold NLL 1.68  needle kept 0.30  KV bytes 30.0%
+
+attention/obs512/mean_visible@30% [obs512-mean_visible]     31s: tf-exact 0.272  digit 0.442  gold NLL 1.60  needle kept 0.41  KV bytes 30.0%
+
+ ilf/obs512/mean_visible@30% [obs512-mean_visible]     31s: tf-exact 0.190  digit 0.410  gold NLL 1.73  needle kept 0.30  KV bytes 30.0%
+
+attention/obs1024/mean_visible@30% [obs1024-mean_visible]     33s: tf-exact 0.283  digit 0.380  gold NLL 1.74  needle kept 0.29  KV bytes 30.0%
+
+ilf/obs1024/mean_visible@30% [obs1024-mean_visible]     33s: tf-exact 0.213  digit 0.438  gold NLL 1.66  needle kept 0.36  KV bytes 30.0%
+
+attention/obs2048/mean_visible@30% [obs2048-mean_visible]     37s: tf-exact 0.197  digit 0.327  gold NLL 1.92  needle kept 0.26  KV bytes 30.0%
+
+ilf/obs2048/mean_visible@30% [obs2048-mean_visible]     37s: tf-exact 0.300  digit 0.488  gold NLL 1.50  needle kept 0.32  KV bytes 30.0%
+
+attention/obsall/mean_visible@30% [obsall-mean_visible]     41s: tf-exact 0.230  digit 0.349  gold NLL 1.90  needle kept 0.28  KV bytes 30.0%
+
+ ilf/obsall/mean_visible@30% [obsall-mean_visible]     41s: tf-exact 0.180  digit 0.407  gold NLL 1.77  needle kept 0.29  KV bytes 30.0%
+
+     attention/obs8/mean@50% [obs8-mean]     31s: tf-exact 0.227  digit 0.418  gold NLL 1.74  needle kept 0.52  KV bytes 50.0%
+
+           ilf/obs8/mean@50% [obs8-mean]     31s: tf-exact 0.190  digit 0.531  gold NLL 1.52  needle kept 0.52  KV bytes 50.0%
+
+    attention/obs16/mean@50% [obs16-mean]     31s: tf-exact 0.137  digit 0.317  gold NLL 2.04  needle kept 0.42  KV bytes 50.0%
+
+          ilf/obs16/mean@50% [obs16-mean]     31s: tf-exact 0.147  digit 0.480  gold NLL 1.66  needle kept 0.48  KV bytes 50.0%
+
+    attention/obs32/mean@50% [obs32-mean]     31s: tf-exact 0.100  digit 0.277  gold NLL 2.15  needle kept 0.38  KV bytes 50.0%
+
+          ilf/obs32/mean@50% [obs32-mean]     31s: tf-exact 0.117  digit 0.435  gold NLL 1.74  needle kept 0.47  KV bytes 50.0%
+
+attention/obs64/mean_visible@50% [obs64-mean_visible]     31s: tf-exact 0.142  digit 0.309  gold NLL 2.01  needle kept 0.39  KV bytes 50.0%
+
+  ilf/obs64/mean_visible@50% [obs64-mean_visible]     31s: tf-exact 0.150  digit 0.456  gold NLL 1.67  needle kept 0.47  KV bytes 50.0%
+
+attention/obs128/mean_visible@50% [obs128-mean_visible]     31s: tf-exact 0.833  digit 0.909  gold NLL 0.33  needle kept 0.75  KV bytes 50.0%
+
+ ilf/obs128/mean_visible@50% [obs128-mean_visible]     31s: tf-exact 0.500  digit 0.753  gold NLL 0.82  needle kept 0.55  KV bytes 50.0%
+
+attention/obs256/mean_visible@50% [obs256-mean_visible]     32s: tf-exact 0.595  digit 0.744  gold NLL 0.79  needle kept 0.66  KV bytes 50.0%
+
+ ilf/obs256/mean_visible@50% [obs256-mean_visible]     32s: tf-exact 0.380  digit 0.686  gold NLL 1.02  needle kept 0.51  KV bytes 50.0%
+
+attention/obs512/mean_visible@50% [obs512-mean_visible]     33s: tf-exact 0.635  digit 0.803  gold NLL 0.62  needle kept 0.70  KV bytes 50.0%
+
+ ilf/obs512/mean_visible@50% [obs512-mean_visible]     33s: tf-exact 0.295  digit 0.572  gold NLL 1.33  needle kept 0.46  KV bytes 50.0%
+
+attention/obs1024/mean_visible@50% [obs1024-mean_visible]     34s: tf-exact 0.577  digit 0.711  gold NLL 0.84  needle kept 0.67  KV bytes 50.0%
+
+ilf/obs1024/mean_visible@50% [obs1024-mean_visible]     34s: tf-exact 0.323  digit 0.509  gold NLL 1.41  needle kept 0.44  KV bytes 50.0%
+
+attention/obs2048/mean_visible@50% [obs2048-mean_visible]     38s: tf-exact 0.453  digit 0.587  gold NLL 1.25  needle kept 0.51  KV bytes 50.0%
+
+ilf/obs2048/mean_visible@50% [obs2048-mean_visible]     38s: tf-exact 0.385  digit 0.666  gold NLL 1.10  needle kept 0.52  KV bytes 50.0%
+
+attention/obsall/mean_visible@50% [obsall-mean_visible]     42s: tf-exact 0.433  digit 0.543  gold NLL 1.33  needle kept 0.52  KV bytes 50.0%
+
+ ilf/obsall/mean_visible@50% [obsall-mean_visible]     42s: tf-exact 0.437  digit 0.642  gold NLL 1.10  needle kept 0.44  KV bytes 50.0%
+
+     attention/obs8/mean@70% [obs8-mean]     32s: tf-exact 0.518  digit 0.718  gold NLL 0.95  needle kept 0.71  KV bytes 70.0%
+
+           ilf/obs8/mean@70% [obs8-mean]     32s: tf-exact 0.617  digit 0.849  gold NLL 0.59  needle kept 0.71  KV bytes 70.0%
+
+    attention/obs16/mean@70% [obs16-mean]     32s: tf-exact 0.345  digit 0.553  gold NLL 1.41  needle kept 0.62  KV bytes 70.0%
+
+          ilf/obs16/mean@70% [obs16-mean]     32s: tf-exact 0.457  digit 0.757  gold NLL 0.87  needle kept 0.67  KV bytes 70.0%
+
+    attention/obs32/mean@70% [obs32-mean]     32s: tf-exact 0.220  digit 0.444  gold NLL 1.73  needle kept 0.57  KV bytes 70.0%
+
+          ilf/obs32/mean@70% [obs32-mean]     32s: tf-exact 0.348  digit 0.693  gold NLL 1.05  needle kept 0.66  KV bytes 70.0%
+
+attention/obs64/mean_visible@70% [obs64-mean_visible]     32s: tf-exact 0.243  digit 0.440  gold NLL 1.70  needle kept 0.56  KV bytes 70.0%
+
+  ilf/obs64/mean_visible@70% [obs64-mean_visible]     32s: tf-exact 0.358  digit 0.679  gold NLL 1.08  needle kept 0.66  KV bytes 70.0%
+
+attention/obs128/mean_visible@70% [obs128-mean_visible]     32s: tf-exact 0.933  digit 0.951  gold NLL 0.14  needle kept 0.88  KV bytes 70.0%
+
+ ilf/obs128/mean_visible@70% [obs128-mean_visible]     32s: tf-exact 0.908  digit 0.966  gold NLL 0.15  needle kept 0.80  KV bytes 70.0%
+
+attention/obs256/mean_visible@70% [obs256-mean_visible]     33s: tf-exact 0.873  digit 0.942  gold NLL 0.21  needle kept 0.84  KV bytes 70.0%
+
+ ilf/obs256/mean_visible@70% [obs256-mean_visible]     33s: tf-exact 0.772  digit 0.931  gold NLL 0.27  needle kept 0.75  KV bytes 70.0%
+
+attention/obs512/mean_visible@70% [obs512-mean_visible]     33s: tf-exact 0.990  digit 0.997  gold NLL 0.01  needle kept 0.88  KV bytes 70.0%
+
+ ilf/obs512/mean_visible@70% [obs512-mean_visible]     34s: tf-exact 0.747  digit 0.918  gold NLL 0.31  needle kept 0.73  KV bytes 70.0%
+
+attention/obs1024/mean_visible@70% [obs1024-mean_visible]     35s: tf-exact 0.983  digit 0.993  gold NLL 0.03  needle kept 0.88  KV bytes 70.0%
+
+ilf/obs1024/mean_visible@70% [obs1024-mean_visible]     35s: tf-exact 0.658  digit 0.864  gold NLL 0.47  needle kept 0.71  KV bytes 70.0%
+
+attention/obs2048/mean_visible@70% [obs2048-mean_visible]     39s: tf-exact 0.767  digit 0.840  gold NLL 0.47  needle kept 0.82  KV bytes 70.0%
+
+ilf/obs2048/mean_visible@70% [obs2048-mean_visible]     39s: tf-exact 0.542  digit 0.739  gold NLL 0.85  needle kept 0.64  KV bytes 70.0%
+
+attention/obsall/mean_visible@70% [obsall-mean_visible]     43s: tf-exact 0.727  digit 0.845  gold NLL 0.53  needle kept 0.75  KV bytes 70.0%
+
+ ilf/obsall/mean_visible@70% [obsall-mean_visible]     43s: tf-exact 0.517  digit 0.837  gold NLL 0.60  needle kept 0.64  KV bytes 70.0%
+
+     attention/obs8/mean@90% [obs8-mean]     33s: tf-exact 0.925  digit 0.975  gold NLL 0.13  needle kept 0.90  KV bytes 90.0%
+
+           ilf/obs8/mean@90% [obs8-mean]     33s: tf-exact 0.977  digit 0.995  gold NLL 0.04  needle kept 0.90  KV bytes 90.0%
+
+    attention/obs16/mean@90% [obs16-mean]     33s: tf-exact 0.750  digit 0.895  gold NLL 0.43  needle kept 0.85  KV bytes 90.0%
+
+          ilf/obs16/mean@90% [obs16-mean]     33s: tf-exact 0.888  digit 0.966  gold NLL 0.15  needle kept 0.86  KV bytes 90.0%
+
+    attention/obs32/mean@90% [obs32-mean]     33s: tf-exact 0.590  digit 0.789  gold NLL 0.79  needle kept 0.81  KV bytes 90.0%
+
+          ilf/obs32/mean@90% [obs32-mean]     33s: tf-exact 0.795  digit 0.934  gold NLL 0.31  needle kept 0.85  KV bytes 90.0%
+
+attention/obs64/mean_visible@90% [obs64-mean_visible]     33s: tf-exact 0.490  digit 0.717  gold NLL 1.03  needle kept 0.79  KV bytes 90.0%
+
+  ilf/obs64/mean_visible@90% [obs64-mean_visible]     33s: tf-exact 0.725  digit 0.893  gold NLL 0.43  needle kept 0.84  KV bytes 90.0%
+
+attention/obs128/mean_visible@90% [obs128-mean_visible]     33s: tf-exact 0.955  digit 0.975  gold NLL 0.09  needle kept 0.96  KV bytes 90.0%
+
+ ilf/obs128/mean_visible@90% [obs128-mean_visible]     33s: tf-exact 0.977  digit 0.991  gold NLL 0.05  needle kept 0.95  KV bytes 90.0%
+
+attention/obs256/mean_visible@90% [obs256-mean_visible]     34s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.96  KV bytes 90.0%
+
+ ilf/obs256/mean_visible@90% [obs256-mean_visible]     34s: tf-exact 0.997  digit 0.999  gold NLL 0.00  needle kept 0.94  KV bytes 90.0%
+
+attention/obs512/mean_visible@90% [obs512-mean_visible]     34s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.97  KV bytes 90.0%
+
+ ilf/obs512/mean_visible@90% [obs512-mean_visible]     34s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.95  KV bytes 90.0%
+
+attention/obs1024/mean_visible@90% [obs1024-mean_visible]     36s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.97  KV bytes 90.0%
+
+ilf/obs1024/mean_visible@90% [obs1024-mean_visible]     36s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.95  KV bytes 90.0%
+
+attention/obs2048/mean_visible@90% [obs2048-mean_visible]     40s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.97  KV bytes 90.0%
+
+ilf/obs2048/mean_visible@90% [obs2048-mean_visible]     40s: tf-exact 0.998  digit 1.000  gold NLL 0.00  needle kept 0.94  KV bytes 90.0%
+
+attention/obsall/mean_visible@90% [obsall-mean_visible]     44s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.95  KV bytes 90.0%
+
+ ilf/obsall/mean_visible@90% [obsall-mean_visible]     44s: tf-exact 0.977  digit 0.995  gold NLL 0.03  needle kept 0.89  KV bytes 90.0%
+
+    attention/obs64/mean@30% [obs64-mean]     30s: tf-exact 0.087  digit 0.224  gold NLL 2.27  needle kept 0.23  KV bytes 30.0%
+
+          ilf/obs64/mean@30% [obs64-mean]     30s: tf-exact 0.042  digit 0.260  gold NLL 2.15  needle kept 0.26  KV bytes 30.0%
+
+   attention/obs128/mean@30% [obs128-mean]     30s: tf-exact 0.450  digit 0.643  gold NLL 1.12  needle kept 0.53  KV bytes 30.0%
+
+         ilf/obs128/mean@30% [obs128-mean]     30s: tf-exact 0.158  digit 0.419  gold NLL 1.74  needle kept 0.30  KV bytes 30.0%
+
+   attention/obs256/mean@30% [obs256-mean]     30s: tf-exact 0.260  digit 0.453  gold NLL 1.60  needle kept 0.41  KV bytes 30.0%
+
+         ilf/obs256/mean@30% [obs256-mean]     30s: tf-exact 0.167  digit 0.448  gold NLL 1.67  needle kept 0.30  KV bytes 30.0%
+
+   attention/obs512/mean@30% [obs512-mean]     31s: tf-exact 0.272  digit 0.446  gold NLL 1.59  needle kept 0.41  KV bytes 30.0%
+
+         ilf/obs512/mean@30% [obs512-mean]     31s: tf-exact 0.178  digit 0.421  gold NLL 1.71  needle kept 0.28  KV bytes 30.0%
+
+  attention/obs1024/mean@30% [obs1024-mean]     33s: tf-exact 0.200  digit 0.364  gold NLL 1.89  needle kept 0.29  KV bytes 30.0%
+
+        ilf/obs1024/mean@30% [obs1024-mean]     33s: tf-exact 0.198  digit 0.481  gold NLL 1.55  needle kept 0.34  KV bytes 30.0%
+
+  attention/obs2048/mean@30% [obs2048-mean]     36s: tf-exact 0.167  digit 0.343  gold NLL 1.92  needle kept 0.27  KV bytes 30.0%
+
+        ilf/obs2048/mean@30% [obs2048-mean]     36s: tf-exact 0.293  digit 0.604  gold NLL 1.26  needle kept 0.36  KV bytes 30.0%
+
+   attention/obsall/mean@30% [obsall-mean]     41s: tf-exact 0.282  digit 0.371  gold NLL 1.75  needle kept 0.30  KV bytes 30.0%
+
+         ilf/obsall/mean@30% [obsall-mean]     41s: tf-exact 0.210  digit 0.443  gold NLL 1.75  needle kept 0.26  KV bytes 30.0%
+
+    attention/obs64/mean@50% [obs64-mean]     31s: tf-exact 0.142  digit 0.309  gold NLL 2.01  needle kept 0.39  KV bytes 50.0%
+
+          ilf/obs64/mean@50% [obs64-mean]     31s: tf-exact 0.150  digit 0.456  gold NLL 1.67  needle kept 0.47  KV bytes 50.0%
+
+   attention/obs128/mean@50% [obs128-mean]     31s: tf-exact 0.833  digit 0.909  gold NLL 0.33  needle kept 0.75  KV bytes 50.0%
+
+         ilf/obs128/mean@50% [obs128-mean]     31s: tf-exact 0.500  digit 0.753  gold NLL 0.82  needle kept 0.55  KV bytes 50.0%
+
+   attention/obs256/mean@50% [obs256-mean]     31s: tf-exact 0.595  digit 0.744  gold NLL 0.79  needle kept 0.66  KV bytes 50.0%
+
+         ilf/obs256/mean@50% [obs256-mean]     31s: tf-exact 0.377  digit 0.684  gold NLL 1.02  needle kept 0.51  KV bytes 50.0%
+
+   attention/obs512/mean@50% [obs512-mean]     32s: tf-exact 0.638  digit 0.801  gold NLL 0.63  needle kept 0.70  KV bytes 50.0%
+
+         ilf/obs512/mean@50% [obs512-mean]     32s: tf-exact 0.295  digit 0.576  gold NLL 1.32  needle kept 0.45  KV bytes 50.0%
+
+  attention/obs1024/mean@50% [obs1024-mean]     34s: tf-exact 0.557  digit 0.717  gold NLL 0.85  needle kept 0.66  KV bytes 50.0%
+
+        ilf/obs1024/mean@50% [obs1024-mean]     34s: tf-exact 0.262  digit 0.549  gold NLL 1.40  needle kept 0.41  KV bytes 50.0%
+
+  attention/obs2048/mean@50% [obs2048-mean]     38s: tf-exact 0.392  digit 0.556  gold NLL 1.42  needle kept 0.51  KV bytes 50.0%
+
+        ilf/obs2048/mean@50% [obs2048-mean]     38s: tf-exact 0.443  digit 0.740  gold NLL 0.86  needle kept 0.51  KV bytes 50.0%
+
+   attention/obsall/mean@50% [obsall-mean]     42s: tf-exact 0.423  digit 0.522  gold NLL 1.36  needle kept 0.46  KV bytes 50.0%
+
+         ilf/obsall/mean@50% [obsall-mean]     42s: tf-exact 0.508  digit 0.710  gold NLL 0.90  needle kept 0.57  KV bytes 50.0%
+
+    attention/obs64/mean@70% [obs64-mean]     32s: tf-exact 0.243  digit 0.440  gold NLL 1.70  needle kept 0.56  KV bytes 70.0%
+
+          ilf/obs64/mean@70% [obs64-mean]     32s: tf-exact 0.358  digit 0.679  gold NLL 1.08  needle kept 0.66  KV bytes 70.0%
+
+   attention/obs128/mean@70% [obs128-mean]     32s: tf-exact 0.933  digit 0.951  gold NLL 0.14  needle kept 0.88  KV bytes 70.0%
+
+         ilf/obs128/mean@70% [obs128-mean]     32s: tf-exact 0.908  digit 0.966  gold NLL 0.15  needle kept 0.80  KV bytes 70.0%
+
+   attention/obs256/mean@70% [obs256-mean]     33s: tf-exact 0.873  digit 0.942  gold NLL 0.21  needle kept 0.84  KV bytes 70.0%
+
+         ilf/obs256/mean@70% [obs256-mean]     33s: tf-exact 0.772  digit 0.931  gold NLL 0.27  needle kept 0.75  KV bytes 70.0%
+
+   attention/obs512/mean@70% [obs512-mean]     34s: tf-exact 0.990  digit 0.997  gold NLL 0.01  needle kept 0.88  KV bytes 70.0%
+
+         ilf/obs512/mean@70% [obs512-mean]     33s: tf-exact 0.753  digit 0.920  gold NLL 0.31  needle kept 0.73  KV bytes 70.0%
+
+  attention/obs1024/mean@70% [obs1024-mean]     35s: tf-exact 0.980  digit 0.992  gold NLL 0.03  needle kept 0.87  KV bytes 70.0%
+
+        ilf/obs1024/mean@70% [obs1024-mean]     35s: tf-exact 0.643  digit 0.874  gold NLL 0.47  needle kept 0.69  KV bytes 70.0%
+
+  attention/obs2048/mean@70% [obs2048-mean]     39s: tf-exact 0.732  digit 0.868  gold NLL 0.52  needle kept 0.78  KV bytes 70.0%
+
+        ilf/obs2048/mean@70% [obs2048-mean]     39s: tf-exact 0.602  digit 0.880  gold NLL 0.53  needle kept 0.65  KV bytes 70.0%
+
+   attention/obsall/mean@70% [obsall-mean]     43s: tf-exact 0.592  digit 0.684  gold NLL 0.95  needle kept 0.63  KV bytes 70.0%
+
+         ilf/obsall/mean@70% [obsall-mean]     43s: tf-exact 0.717  digit 0.910  gold NLL 0.31  needle kept 0.75  KV bytes 70.0%
+
+    attention/obs64/mean@90% [obs64-mean]     33s: tf-exact 0.490  digit 0.717  gold NLL 1.03  needle kept 0.79  KV bytes 90.0%
+
+          ilf/obs64/mean@90% [obs64-mean]     33s: tf-exact 0.725  digit 0.893  gold NLL 0.43  needle kept 0.84  KV bytes 90.0%
+
+   attention/obs128/mean@90% [obs128-mean]     33s: tf-exact 0.955  digit 0.975  gold NLL 0.09  needle kept 0.96  KV bytes 90.0%
+
+         ilf/obs128/mean@90% [obs128-mean]     33s: tf-exact 0.977  digit 0.991  gold NLL 0.05  needle kept 0.95  KV bytes 90.0%
+
+   attention/obs256/mean@90% [obs256-mean]     33s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.96  KV bytes 90.0%
+
+         ilf/obs256/mean@90% [obs256-mean]     33s: tf-exact 0.997  digit 0.999  gold NLL 0.00  needle kept 0.94  KV bytes 90.0%
+
+   attention/obs512/mean@90% [obs512-mean]     34s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.97  KV bytes 90.0%
+
+         ilf/obs512/mean@90% [obs512-mean]     34s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.95  KV bytes 90.0%
+
+  attention/obs1024/mean@90% [obs1024-mean]     36s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.97  KV bytes 90.0%
+
+        ilf/obs1024/mean@90% [obs1024-mean]     36s: tf-exact 1.000  digit 1.000  gold NLL 0.00  needle kept 0.95  KV bytes 90.0%
+
+  attention/obs2048/mean@90% [obs2048-mean]     40s: tf-exact 0.958  digit 0.991  gold NLL 0.05  needle kept 0.95  KV bytes 90.0%
+
+        ilf/obs2048/mean@90% [obs2048-mean]     40s: tf-exact 0.948  digit 0.989  gold NLL 0.05  needle kept 0.91  KV bytes 90.0%
+
+   attention/obsall/mean@90% [obsall-mean]     44s: tf-exact 0.795  digit 0.862  gold NLL 0.48  needle kept 0.84  KV bytes 90.0%
+
+         ilf/obsall/mean@90% [obsall-mean]     44s: tf-exact 0.980  digit 0.996  gold NLL 0.02  needle kept 0.90  KV bytes 90.0%
+
+Saved /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B/window_screen_raw.csv
+Saved /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B/window_screen.csv
+tf_exact by scoring window
+
+obs_window                         8     16     32     64    128    256  \
+budget reduce       selector                                              
+0.3    mean         attention  0.073  0.047  0.032  0.087  0.450  0.260   
+                    ilf        0.033  0.020  0.013  0.042  0.158  0.167   
+       mean_visible attention    NaN    NaN    NaN  0.087  0.450  0.260   
+                    ilf          NaN    NaN    NaN  0.042  0.160  0.170   
+0.5    mean         attention  0.227  0.137  0.100  0.142  0.833  0.595   
+                    ilf        0.190  0.147  0.117  0.150  0.500  0.377   
+       mean_visible attention    NaN    NaN    NaN  0.142  0.833  0.595   
+                    ilf          NaN    NaN    NaN  0.150  0.500  0.380   
+0.7    mean         attention  0.518  0.345  0.220  0.243  0.933  0.873   
+                    ilf        0.617  0.457  0.348  0.358  0.908  0.772   
+       mean_visible attention    NaN    NaN    NaN  0.243  0.933  0.873   
+                    ilf          NaN    NaN    NaN  0.358  0.908  0.772   
+0.9    mean         attention  0.925  0.750  0.590  0.490  0.955  1.000   
+                    ilf        0.977  0.888  0.795  0.725  0.977  0.997   
+       mean_visible attention    NaN    NaN    NaN  0.490  0.955  1.000   
+                    ilf          NaN    NaN    NaN  0.725  0.977  0.997   
+
+obs_window                       512   1024   2048    all  
+budget reduce       selector                               
+0.3    mean         attention  0.272  0.200  0.167  0.282  
+                    ilf        0.178  0.198  0.293  0.210  
+       mean_visible attention  0.272  0.283  0.197  0.230  
+                    ilf        0.190  0.213  0.300  0.180  
+0.5    mean         attention  0.638  0.557  0.392  0.423  
+                    ilf        0.295  0.262  0.443  0.508  
+       mean_visible attention  0.635  0.577  0.453  0.433  
+                    ilf        0.295  0.323  0.385  0.437  
+0.7    mean         attention  0.990  0.980  0.732  0.592  
+                    ilf        0.753  0.643  0.602  0.717  
+       mean_visible attention  0.990  0.983  0.767  0.727  
+                    ilf        0.747  0.658  0.542  0.517  
+0.9    mean         attention  1.000  1.000  0.958  0.795  
+                    ilf        1.000  1.000  0.948  0.980  
+       mean_visible attention  1.000  1.000  1.000  1.000  
+                    ilf        1.000  1.000  0.998  0.977  
+gold_nll by scoring window
+
+obs_window                         8     16     32     64    128    256  \
+budget reduce       selector                                              
+0.3    mean         attention  2.233  2.369  2.379  2.268  1.119  1.598   
+                    ilf        2.147  2.202  2.238  2.147  1.736  1.670   
+       mean_visible attention    NaN    NaN    NaN  2.268  1.119  1.598   
+                    ilf          NaN    NaN    NaN  2.147  1.736  1.678   
+0.5    mean         attention  1.741  2.036  2.150  2.010  0.326  0.787   
+                    ilf        1.525  1.663  1.735  1.672  0.820  1.023   
+       mean_visible attention    NaN    NaN    NaN  2.010  0.326  0.787   
+                    ilf          NaN    NaN    NaN  1.672  0.820  1.023   
+0.7    mean         attention  0.950  1.407  1.731  1.704  0.144  0.208   
+                    ilf        0.591  0.874  1.049  1.081  0.147  0.267   
+       mean_visible attention    NaN    NaN    NaN  1.704  0.144  0.208   
+                    ilf          NaN    NaN    NaN  1.081  0.147  0.267   
+0.9    mean         attention  0.130  0.425  0.793  1.029  0.092  0.000   
+                    ilf        0.038  0.151  0.314  0.426  0.049  0.001   
+       mean_visible attention    NaN    NaN    NaN  1.029  0.092  0.000   
+                    ilf          NaN    NaN    NaN  0.426  0.049  0.001   
+
+obs_window                       512   1024   2048    all  
+budget reduce       selector                               
+0.3    mean         attention  1.589  1.894  1.924  1.747  
+                    ilf        1.709  1.551  1.263  1.753  
+       mean_visible attention  1.597  1.738  1.923  1.900  
+                    ilf        1.729  1.662  1.496  1.769  
+0.5    mean         attention  0.625  0.848  1.419  1.357  
+                    ilf        1.321  1.399  0.859  0.902  
+       mean_visible attention  0.624  0.844  1.250  1.334  
+                    ilf        1.332  1.411  1.102  1.101  
+0.7    mean         attention  0.011  0.030  0.521  0.950  
+                    ilf        0.308  0.470  0.530  0.312  
+       mean_visible attention  0.011  0.029  0.473  0.525  
+                    ilf        0.309  0.469  0.853  0.599  
+0.9    mean         attention  0.000  0.000  0.053  0.485  
+                    ilf        0.000  0.000  0.053  0.024  
+       mean_visible attention  0.000  0.000  0.000  0.000  
+                    ilf        0.000  0.000  0.005  0.026  
+needle_kept_frac by scoring window
+
+obs_window                         8     16     32     64    128    256  \
+budget reduce       selector                                              
+0.3    mean         attention  0.317  0.237  0.213  0.232  0.527  0.411   
+                    ilf        0.317  0.276  0.260  0.261  0.299  0.298   
+       mean_visible attention    NaN    NaN    NaN  0.232  0.527  0.411   
+                    ilf          NaN    NaN    NaN  0.261  0.299  0.300   
+0.5    mean         attention  0.520  0.422  0.380  0.387  0.754  0.661   
+                    ilf        0.525  0.480  0.468  0.471  0.552  0.505   
+       mean_visible attention    NaN    NaN    NaN  0.387  0.754  0.661   
+                    ilf          NaN    NaN    NaN  0.471  0.552  0.505   
+0.7    mean         attention  0.714  0.620  0.573  0.560  0.877  0.839   
+                    ilf        0.710  0.671  0.657  0.663  0.798  0.745   
+       mean_visible attention    NaN    NaN    NaN  0.560  0.877  0.839   
+                    ilf          NaN    NaN    NaN  0.663  0.798  0.745   
+0.9    mean         attention  0.902  0.847  0.812  0.787  0.961  0.960   
+                    ilf        0.895  0.863  0.848  0.842  0.953  0.939   
+       mean_visible attention    NaN    NaN    NaN  0.787  0.961  0.960   
+                    ilf          NaN    NaN    NaN  0.842  0.953  0.939   
+
+obs_window                       512   1024   2048    all  
+budget reduce       selector                               
+0.3    mean         attention  0.406  0.290  0.274  0.302  
+                    ilf        0.284  0.344  0.365  0.262  
+       mean_visible attention  0.407  0.295  0.262  0.282  
+                    ilf        0.299  0.356  0.321  0.288  
+0.5    mean         attention  0.700  0.660  0.509  0.462  
+                    ilf        0.455  0.408  0.506  0.572  
+       mean_visible attention  0.701  0.667  0.507  0.515  
+                    ilf        0.459  0.438  0.524  0.441  
+0.7    mean         attention  0.878  0.872  0.779  0.634  
+                    ilf        0.733  0.695  0.653  0.750  
+       mean_visible attention  0.878  0.876  0.821  0.753  
+                    ilf        0.734  0.705  0.636  0.636  
+0.9    mean         attention  0.970  0.972  0.946  0.840  
+                    ilf        0.949  0.945  0.909  0.904  
+       mean_visible attention  0.970  0.972  0.971  0.949  
+                    ilf        0.949  0.947  0.939  0.893  
+<Figure size 1920x420 with 4 Axes>
+<Figure size 1920x420 with 4 Axes>
+<Figure size 1920x420 with 4 Axes>
+Saved /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B/window_screen_paired.csv
+
+    budget        reduce obs_window  mean_a  mean_b  diff_b_minus_a  ci_lo  \
+0      0.3          mean          8   0.073   0.033          -0.040 -0.063   
+6      0.3          mean         16   0.047   0.020          -0.027 -0.040   
+12     0.3          mean         32   0.032   0.013          -0.018 -0.030   
+14     0.3  mean_visible         64   0.087   0.042          -0.045 -0.092   
+20     0.3  mean_visible        128   0.450   0.160          -0.290 -0.342   
+..     ...           ...        ...     ...     ...             ...    ...   
+362    0.9          mean        256   1.000   0.997          -0.003 -0.010   
+368    0.9          mean        512   1.000   1.000           0.000  0.000   
+374    0.9          mean       1024   1.000   1.000           0.000  0.000   
+380    0.9          mean       2048   0.958   0.948          -0.010 -0.023   
+386    0.9          mean        all   0.795   0.980           0.185  0.167   
+
+     ci_hi  
+0   -0.018  
+6   -0.013  
+12  -0.007  
+14  -0.013  
+20  -0.242  
+..     ...  
+362  0.000  
+368  0.000  
+374  0.000  
+380  0.003  
+386  0.203  
+
+[68 rows x 8 columns]
+tf-exact of the repeated arms (here vs before):
+
+                       check   selector budget   here  before
+0                obs32 vs E0  attention    0.3  0.032   0.032
+1                obs32 vs E0        ilf    0.3  0.013   0.013
+2                obs32 vs E0  attention    0.5  0.100   0.100
+3                obs32 vs E0        ilf    0.5  0.117   0.117
+4                obs32 vs E0  attention    0.7  0.220   0.220
+5   obsall vs E3 all_queries  attention    0.7  0.727   0.727
+6                obs32 vs E0        ilf    0.7  0.348   0.348
+7   obsall vs E3 all_queries        ilf    0.7  0.517   0.517
+8                obs32 vs E0  attention    0.9  0.590   0.590
+9   obsall vs E3 all_queries  attention    0.9  1.000   1.000
+10               obs32 vs E0        ilf    0.9  0.795   0.795
+11  obsall vs E3 all_queries        ilf    0.9  0.977   0.977
+window screen: 137 arms, 34.1 s per arm (median 32.7 s), 1.30 GPU-hours in total
+
+Ending Cell 46-----------------------------------------
+Executing Cell 47--------------------------------------
+Ending Cell 47-----------------------------------------
+Executing Cell 48--------------------------------------
+Ending Cell 48-----------------------------------------
+Executing Cell 49--------------------------------------
+Ending Cell 49-----------------------------------------
+Executing Cell 50--------------------------------------
+Ending Cell 50-----------------------------------------
+Executing Cell 51--------------------------------------
+Ending Cell 51-----------------------------------------
+Executing Cell 52--------------------------------------
+Ending Cell 52-----------------------------------------
+Executing Cell 53--------------------------------------
+done: lane window, attempt 0, results in /orcd/home/002/alsalali/cache-me-if-you-can/kv_cache_results/Qwen__Qwen3-8B
+
+Ending Cell 53-----------------------------------------
+Executing Cell 54--------------------------------------
+Ending Cell 54-----------------------------------------
+=== 2026-11-18T23:47:03-05:00 papermill exited with 0 (executed notebook: runs/window_full_Qwen__Qwen3-8B_29602058_a0.ipynb)

@@ -11,7 +11,7 @@
 #
 # Requeue-safe headless run of kv_cache_consolidated.ipynb. Submit from the repo root:
 #   sbatch -J kvc-<lane> cluster/run.sbatch <lane> [preset] [model] [extra papermill args...]
-#   lanes: all | smoke | final | exp-a | exp-b | bench | optional   (see the notebook's §0)
+#   lanes: all | smoke | final | exp-a | exp-b | bench | optional | window   (see the notebook's §0)
 # Every arm is saved as it finishes, so a requeued attempt re-runs the notebook from the top and loads
 # finished arms instead of running them. A cell error exits non-zero: the job FAILS instead of looping.
 

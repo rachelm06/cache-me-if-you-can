@@ -36,3 +36,9 @@
 ## E6 position and content diversity
 
 - [e6_content_diversity.png](e6_content_diversity.png)
+
+## Observation-window screen
+
+- [window_screen_gold_nll.png](window_screen_gold_nll.png)
+- [window_screen_needle_kept_frac.png](window_screen_needle_kept_frac.png)
+- [window_screen_tf_exact.png](window_screen_tf_exact.png)
